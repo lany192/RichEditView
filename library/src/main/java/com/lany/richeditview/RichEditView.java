@@ -14,7 +14,7 @@ public class RichEditView extends FrameLayout implements View.OnClickListener {
     private RichEditor mEditor;
     private boolean mTextColorChanged;
     private boolean mBgColorChanged;
-    private String mContent;
+    private View mTextMenuView;
 
     public RichEditView(Context context) {
         super(context);
@@ -34,7 +34,10 @@ public class RichEditView extends FrameLayout implements View.OnClickListener {
     private void initView(AttributeSet attrs) {
         View view = View.inflate(this.getContext(), R.layout.view_edit, this);
         mEditor = view.findViewById(R.id.editor);
-        mEditor.setEditorHeight(200);
+        mTextMenuView = view.findViewById(R.id.bottom_text_menu_view);
+
+
+//        mEditor.setEditorHeight(200);
         mEditor.setEditorFontSize(18);
         mEditor.setEditorFontColor(Color.BLACK);
         //mEditor.setEditorBackgroundColor(Color.BLUE);
@@ -44,6 +47,8 @@ public class RichEditView extends FrameLayout implements View.OnClickListener {
         //mEditor.setBackground("https://raw.githubusercontent.com/wasabeef/art/master/chip.jpg");
         mEditor.setPlaceholder("请输入...");
         //mEditor.setInputEnabled(false);
+
+        findViewById(R.id.action_text_menu).setOnClickListener(this);
         findViewById(R.id.action_undo).setOnClickListener(this);
         findViewById(R.id.action_redo).setOnClickListener(this);
         findViewById(R.id.action_bold).setOnClickListener(this);
@@ -76,7 +81,13 @@ public class RichEditView extends FrameLayout implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.action_undo) {
+        if (i == R.id.action_text_menu) {
+            if (mTextMenuView.getVisibility() == VISIBLE) {
+                mTextMenuView.setVisibility(GONE);
+            } else {
+                mTextMenuView.setVisibility(VISIBLE);
+            }
+        } else if (i == R.id.action_undo) {
             mEditor.undo();
         } else if (i == R.id.action_redo) {
             mEditor.redo();
