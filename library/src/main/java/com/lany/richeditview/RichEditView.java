@@ -2,16 +2,19 @@ package com.lany.richeditview;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
 import jp.wasabeef.richeditor.RichEditor;
 
-public class RichEditView extends FrameLayout {
+public class RichEditView extends FrameLayout implements View.OnClickListener {
     private final String TAG = getClass().getSimpleName();
     private RichEditor mEditor;
+    private boolean mTextColorChanged;
+    private boolean mBgColorChanged;
+    private String mContent;
 
     public RichEditView(Context context) {
         super(context);
@@ -32,215 +35,267 @@ public class RichEditView extends FrameLayout {
         View view = View.inflate(this.getContext(), R.layout.view_edit, this);
         mEditor = view.findViewById(R.id.editor);
         mEditor.setEditorHeight(200);
-        mEditor.setEditorFontSize(22);
-        mEditor.setEditorFontColor(Color.RED);
+        mEditor.setEditorFontSize(18);
+        mEditor.setEditorFontColor(Color.BLACK);
         //mEditor.setEditorBackgroundColor(Color.BLUE);
         //mEditor.setBackgroundColor(Color.BLUE);
         //mEditor.setBackgroundResource(R.drawable.bg);
         mEditor.setPadding(10, 10, 10, 10);
         //mEditor.setBackground("https://raw.githubusercontent.com/wasabeef/art/master/chip.jpg");
-        mEditor.setPlaceholder("Insert text here...");
+        mEditor.setPlaceholder("请输入...");
         //mEditor.setInputEnabled(false);
-        mEditor.setOnTextChangeListener(new RichEditor.OnTextChangeListener() {
-            @Override
-            public void onTextChange(String text) {
-                Log.i(TAG, "内容: " + text);
-            }
-        });
+        findViewById(R.id.action_undo).setOnClickListener(this);
+        findViewById(R.id.action_redo).setOnClickListener(this);
+        findViewById(R.id.action_bold).setOnClickListener(this);
+        findViewById(R.id.action_italic).setOnClickListener(this);
+        findViewById(R.id.action_subscript).setOnClickListener(this);
+        findViewById(R.id.action_superscript).setOnClickListener(this);
+        findViewById(R.id.action_strikethrough).setOnClickListener(this);
+        findViewById(R.id.action_underline).setOnClickListener(this);
+        findViewById(R.id.action_heading1).setOnClickListener(this);
+        findViewById(R.id.action_heading2).setOnClickListener(this);
+        findViewById(R.id.action_heading3).setOnClickListener(this);
+        findViewById(R.id.action_heading4).setOnClickListener(this);
+        findViewById(R.id.action_heading5).setOnClickListener(this);
+        findViewById(R.id.action_heading6).setOnClickListener(this);
+        findViewById(R.id.action_txt_color).setOnClickListener(this);
+        findViewById(R.id.action_bg_color).setOnClickListener(this);
+        findViewById(R.id.action_indent).setOnClickListener(this);
+        findViewById(R.id.action_outdent).setOnClickListener(this);
+        findViewById(R.id.action_align_left).setOnClickListener(this);
+        findViewById(R.id.action_align_center).setOnClickListener(this);
+        findViewById(R.id.action_align_right).setOnClickListener(this);
+        findViewById(R.id.action_blockquote).setOnClickListener(this);
+        findViewById(R.id.action_insert_bullets).setOnClickListener(this);
+        findViewById(R.id.action_insert_numbers).setOnClickListener(this);
+        findViewById(R.id.action_insert_image).setOnClickListener(this);
+        findViewById(R.id.action_insert_link).setOnClickListener(this);
+        findViewById(R.id.action_insert_checkbox).setOnClickListener(this);
+    }
 
-        findViewById(R.id.action_undo).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.undo();
-            }
-        });
+    @Override
+    public void onClick(View v) {
+        int i = v.getId();
+        if (i == R.id.action_undo) {
+            mEditor.undo();
+        } else if (i == R.id.action_redo) {
+            mEditor.redo();
+        } else if (i == R.id.action_bold) {
+            mEditor.setBold();
+        } else if (i == R.id.action_italic) {
+            mEditor.setItalic();
+        } else if (i == R.id.action_subscript) {
+            mEditor.setSubscript();
+        } else if (i == R.id.action_superscript) {
+            mEditor.setSuperscript();
+        } else if (i == R.id.action_strikethrough) {
+            mEditor.setStrikeThrough();
+        } else if (i == R.id.action_underline) {
+            mEditor.setUnderline();
+        } else if (i == R.id.action_heading1) {
+            mEditor.setHeading(1);
+        } else if (i == R.id.action_heading2) {
+            mEditor.setHeading(2);
+        } else if (i == R.id.action_heading3) {
+            mEditor.setHeading(3);
+        } else if (i == R.id.action_heading4) {
+            mEditor.setHeading(4);
+        } else if (i == R.id.action_heading5) {
+            mEditor.setHeading(5);
+        } else if (i == R.id.action_heading6) {
+            mEditor.setHeading(6);
+        } else if (i == R.id.action_txt_color) {
+            mEditor.setTextColor(mTextColorChanged ? Color.BLACK : Color.RED);
+            mTextColorChanged = !mTextColorChanged;
+        } else if (i == R.id.action_bg_color) {
+            mEditor.setTextBackgroundColor(mBgColorChanged ? Color.TRANSPARENT : Color.YELLOW);
+            mBgColorChanged = !mBgColorChanged;
+        } else if (i == R.id.action_indent) {
+            mEditor.setIndent();
+        } else if (i == R.id.action_outdent) {
+            mEditor.setOutdent();
+        } else if (i == R.id.action_align_left) {
+            mEditor.setAlignLeft();
+        } else if (i == R.id.action_align_center) {
+            mEditor.setAlignCenter();
+        } else if (i == R.id.action_align_right) {
+            mEditor.setAlignRight();
+        } else if (i == R.id.action_insert_bullets) {
+            mEditor.setBullets();
+        } else if (i == R.id.action_insert_numbers) {
+            mEditor.setNumbers();
+        } else if (i == R.id.action_blockquote) {
+            mEditor.setBlockquote();
+        } else if (i == R.id.action_insert_image) {
+            mEditor.insertImage("http://www.1honeywan.com/dachshund/image/7.21/7.21_3_thumb.JPG", "dachshund");
+        } else if (i == R.id.action_insert_link) {
+            mEditor.insertLink("https://github.com/wasabeef", "wasabeef");
+        } else if (i == R.id.action_insert_checkbox) {
+            mEditor.insertTodo();
+        }
+    }
 
-        findViewById(R.id.action_redo).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.redo();
-            }
-        });
+    public void setOnTextChangeListener(RichEditor.OnTextChangeListener listener) {
+        mEditor.setOnTextChangeListener(listener);
+    }
 
-        findViewById(R.id.action_bold).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setBold();
-            }
-        });
+    public void setHtml(String contents) {
+        mEditor.setHtml(contents);
+    }
 
-        findViewById(R.id.action_italic).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setItalic();
-            }
-        });
+    public String getHtml() {
+        return mEditor.getHtml();
+    }
 
-        findViewById(R.id.action_subscript).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setSubscript();
-            }
-        });
+    public void setEditorFontColor(int color) {
+        mEditor.setEditorFontColor(color);
+    }
 
-        findViewById(R.id.action_superscript).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setSuperscript();
-            }
-        });
+    public void setEditorFontSize(int px) {
+        mEditor.setEditorFontSize(px);
+    }
 
-        findViewById(R.id.action_strikethrough).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setStrikeThrough();
-            }
-        });
+    public void setEditorPadding(int left, int top, int right, int bottom) {
+        mEditor.setPadding(left, top, right, bottom);
+    }
 
-        findViewById(R.id.action_underline).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setUnderline();
-            }
-        });
+    public void setEditorBackgroundColor(int color) {
+        mEditor.setBackgroundColor(color);
+    }
 
-        findViewById(R.id.action_heading1).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setHeading(1);
-            }
-        });
+    public void setEditorBackgroundResource(int resid) {
+        mEditor.setBackgroundResource(resid);
+    }
 
-        findViewById(R.id.action_heading2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setHeading(2);
-            }
-        });
+    public void setEditorBackground(Drawable background) {
+        mEditor.setBackground(background);
+    }
 
-        findViewById(R.id.action_heading3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setHeading(3);
-            }
-        });
+    public void setEditorBackground(String url) {
+        mEditor.setBackground(url);
+    }
 
-        findViewById(R.id.action_heading4).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setHeading(4);
-            }
-        });
+    public void setEditorWidth(int px) {
+        mEditor.setEditorWidth(px);
+    }
 
-        findViewById(R.id.action_heading5).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setHeading(5);
-            }
-        });
+    public void setEditorHeight(int px) {
+        mEditor.setEditorHeight(px);
+    }
 
-        findViewById(R.id.action_heading6).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setHeading(6);
-            }
-        });
+    public void setPlaceholder(String placeholder) {
+        mEditor.setPlaceholder(placeholder);
+    }
 
-        findViewById(R.id.action_txt_color).setOnClickListener(new View.OnClickListener() {
-            private boolean isChanged;
+    public void setInputEnabled(Boolean inputEnabled) {
+        mEditor.setInputEnabled(inputEnabled);
+    }
 
-            @Override
-            public void onClick(View v) {
-                mEditor.setTextColor(isChanged ? Color.BLACK : Color.RED);
-                isChanged = !isChanged;
-            }
-        });
+    public void loadCSS(String cssFile) {
+        mEditor.loadCSS(cssFile);
+    }
 
-        findViewById(R.id.action_bg_color).setOnClickListener(new View.OnClickListener() {
-            private boolean isChanged;
+    public void undo() {
+        mEditor.undo();
+    }
 
-            @Override
-            public void onClick(View v) {
-                mEditor.setTextBackgroundColor(isChanged ? Color.TRANSPARENT : Color.YELLOW);
-                isChanged = !isChanged;
-            }
-        });
+    public void redo() {
+        mEditor.redo();
+    }
 
-        findViewById(R.id.action_indent).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setIndent();
-            }
-        });
+    public void setBold() {
+        mEditor.setBold();
+    }
 
-        findViewById(R.id.action_outdent).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setOutdent();
-            }
-        });
+    public void setItalic() {
+        mEditor.setItalic();
+    }
 
-        findViewById(R.id.action_align_left).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setAlignLeft();
-            }
-        });
+    public void setSubscript() {
+        mEditor.setSubscript();
+    }
 
-        findViewById(R.id.action_align_center).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setAlignCenter();
-            }
-        });
+    public void setSuperscript() {
+        mEditor.setSuperscript();
+    }
 
-        findViewById(R.id.action_align_right).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setAlignRight();
-            }
-        });
+    public void setStrikeThrough() {
+        mEditor.setStrikeThrough();
+    }
 
-        findViewById(R.id.action_blockquote).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setBlockquote();
-            }
-        });
+    public void setUnderline() {
+        mEditor.setUnderline();
+    }
 
-        findViewById(R.id.action_insert_bullets).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setBullets();
-            }
-        });
+    public void setTextColor(int color) {
+        mEditor.setTextColor(color);
+    }
 
-        findViewById(R.id.action_insert_numbers).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setNumbers();
-            }
-        });
+    public void setTextBackgroundColor(int color) {
+        mEditor.setFontSize(color);
+    }
 
-        findViewById(R.id.action_insert_image).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.insertImage("http://www.1honeywan.com/dachshund/image/7.21/7.21_3_thumb.JPG",
-                        "dachshund");
-            }
-        });
+    public void setFontSize(int fontSize) {
+        mEditor.setFontSize(fontSize);
+    }
 
-        findViewById(R.id.action_insert_link).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.insertLink("https://github.com/wasabeef", "wasabeef");
-            }
-        });
-        findViewById(R.id.action_insert_checkbox).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.insertTodo();
-            }
-        });
+    public void removeFormat() {
+        mEditor.removeFormat();
+    }
+
+    public void setHeading(int heading) {
+        mEditor.setHeading(heading);
+    }
+
+    public void setIndent() {
+        mEditor.setIndent();
+    }
+
+    public void setOutdent() {
+        mEditor.setOutdent();
+    }
+
+    public void setAlignLeft() {
+        mEditor.setAlignLeft();
+    }
+
+    public void setAlignCenter() {
+        mEditor.setAlignCenter();
+    }
+
+    public void setAlignRight() {
+        mEditor.setAlignRight();
+    }
+
+    public void setBlockquote() {
+        mEditor.setBlockquote();
+    }
+
+    public void setBullets() {
+        mEditor.setBullets();
+    }
+
+    public void setNumbers() {
+        mEditor.setNumbers();
+    }
+
+    public void insertImage(String url, String alt) {
+        mEditor.insertLink(url, alt);
+    }
+
+    public void insertLink(String href, String title) {
+        mEditor.insertLink(href, title);
+    }
+
+    public void insertTodo() {
+        mEditor.insertTodo();
+    }
+
+    public void focusEditor() {
+        mEditor.focusEditor();
+    }
+
+    public void clearFocusEditor() {
+        mEditor.clearFocusEditor();
     }
 }

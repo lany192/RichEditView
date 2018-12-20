@@ -2,8 +2,11 @@ package com.lany.richeditview.sample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.lany.richeditview.RichEditView;
+
+import jp.wasabeef.richeditor.RichEditor;
 
 public class MainActivity extends AppCompatActivity {
     private RichEditView richEditView;
@@ -13,5 +16,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         richEditView = findViewById(R.id.rich_edit_view);
+        richEditView.setOnTextChangeListener(new RichEditor.OnTextChangeListener() {
+            @Override
+            public void onTextChange(String text) {
+                Log.i("TAG", "内容: " + text);
+            }
+        });
     }
 }
