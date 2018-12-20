@@ -257,7 +257,7 @@
                 android:layout_height="48dp"
                 android:background="@null"
                 android:contentDescription="@null"
-                android:src="@drawable/insert_link" />
+                android:src="@drawable/link_white" />
 
             <ImageButton
                 android:id="@+id/action_insert_checkbox"
@@ -265,7 +265,7 @@
                 android:layout_height="48dp"
                 android:background="@null"
                 android:contentDescription="@null"
-                android:src="@android:drawable/checkbox_on_background" />
+                android:src="@drawable/check_white" />
 
         </LinearLayout>
     </HorizontalScrollView>
