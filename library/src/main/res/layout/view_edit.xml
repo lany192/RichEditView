@@ -222,8 +222,9 @@
                 android:id="@+id/action_text_menu"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@android:color/holo_red_light"
-                android:contentDescription="@null" />
+                android:background="@null"
+                android:contentDescription="@null"
+                android:src="@drawable/text_a_white" />
 
             <ImageButton
                 android:id="@+id/action_undo"
@@ -248,7 +249,7 @@
                 android:layout_height="48dp"
                 android:background="@null"
                 android:contentDescription="@null"
-                android:src="@drawable/insert_image" />
+                android:src="@drawable/image_white" />
 
             <ImageButton
                 android:id="@+id/action_insert_link"
