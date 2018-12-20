@@ -15,6 +15,7 @@ public class RichEditView extends FrameLayout implements View.OnClickListener {
     private boolean mTextColorChanged;
     private boolean mBgColorChanged;
     private View mTextMenuView;
+    private OnActionListener mListener;
 
     public RichEditView(Context context) {
         super(context);
@@ -78,6 +79,15 @@ public class RichEditView extends FrameLayout implements View.OnClickListener {
         findViewById(R.id.action_insert_checkbox).setOnClickListener(this);
     }
 
+    public interface OnActionListener {
+        void insertLinkClicked();
+        void insertImageClicked();
+    }
+
+    public void setOnActionListener(OnActionListener listener) {
+        this.mListener = listener;
+    }
+
     @Override
     public void onClick(View v) {
         int i = v.getId();
@@ -138,9 +148,13 @@ public class RichEditView extends FrameLayout implements View.OnClickListener {
         } else if (i == R.id.action_blockquote) {
             mEditor.setBlockquote();
         } else if (i == R.id.action_insert_image) {
-            mEditor.insertImage("http://www.1honeywan.com/dachshund/image/7.21/7.21_3_thumb.JPG", "dachshund");
+            if(mListener!=null){
+                mListener.insertImageClicked();
+            }
         } else if (i == R.id.action_insert_link) {
-            mEditor.insertLink("https://github.com/wasabeef", "wasabeef");
+            if(mListener!=null){
+                mListener.insertLinkClicked();
+            }
         } else if (i == R.id.action_insert_checkbox) {
             mEditor.insertTodo();
         }

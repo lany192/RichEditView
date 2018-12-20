@@ -22,5 +22,16 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("TAG", "内容: " + text);
             }
         });
+        richEditView.setOnActionListener(new RichEditView.OnActionListener() {
+            @Override
+            public void insertLinkClicked() {
+                richEditView.insertLink("https://github.com/wasabeef", "wasabeef");
+            }
+
+            @Override
+            public void insertImageClicked() {
+                richEditView.insertImage("http://www.1honeywan.com/dachshund/image/7.21/7.21_3_thumb.JPG", "dachshund");
+            }
+        });
     }
 }
