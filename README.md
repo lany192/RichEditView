@@ -1,10 +1,10 @@
 [![](https://jitpack.io/v/lany192/RichEditView.svg)](https://jitpack.io/#lany192/RichEditView)
 
 # RichEditView
-demo
 
+Android rich text editor
 
-## 1
+## 第一步
 
 	allprojects {
 		repositories {
@@ -13,8 +13,13 @@ demo
 		}
 	}
 	
-## 2
+## 第二步
 
 	dependencies {
 	        implementation 'com.github.lany192:RichEditView:1.0.0'
 	}
+	
+	
+## thanks
+
+    改编自 https://github.com/wasabeef/richeditor-android
