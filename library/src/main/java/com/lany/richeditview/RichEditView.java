@@ -80,7 +80,7 @@ public class RichEditView extends FrameLayout implements View.OnClickListener {
     public interface OnActionListener {
         void insertLinkClicked();
 
-        void insertImageClicked();
+        void insertImgClicked();
     }
 
     public void setOnActionListener(OnActionListener listener) {
@@ -148,7 +148,7 @@ public class RichEditView extends FrameLayout implements View.OnClickListener {
             mEditor.setBlockquote();
         } else if (i == R.id.action_insert_image) {
             if (mListener != null) {
-                mListener.insertImageClicked();
+                mListener.insertImgClicked();
             }
         } else if (i == R.id.action_insert_link) {
             if (mListener != null) {
@@ -303,8 +303,12 @@ public class RichEditView extends FrameLayout implements View.OnClickListener {
         mEditor.setNumbers();
     }
 
-    public void insertImage(String url, String alt) {
-        mEditor.insertImage(url, alt);
+    public void insertImg(String url, String alt) {
+        mEditor.insertImg(url, alt);
+    }
+
+    public void insertImgFullWidth(String url, String alt) {
+        mEditor.insertImgFullWidth(url, alt);
     }
 
     public void insertLink(String href, String title) {

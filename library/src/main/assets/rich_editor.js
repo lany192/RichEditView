@@ -176,8 +176,13 @@ RE.setBlockquote = function() {
     document.execCommand('formatBlock', false, '<blockquote>');
 }
 
-RE.insertImage = function(url, alt) {
+RE.insertImgFullWidth = function(url, alt) {
     var html = '<img src="' + url + '" width="100%" alt="' + alt + '" />';
+    RE.insertHTML(html);
+}
+
+RE.insertImg = function(url, alt) {
+    var html = '<img src="' + url + '" alt="' + alt + '" />';
     RE.insertHTML(html);
 }
 
