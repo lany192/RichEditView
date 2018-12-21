@@ -29,7 +29,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void insertImageClicked() {
-                richEditView.insertImage("http://d.hiphotos.baidu.com/image/pic/item/91ef76c6a7efce1b5ef04082a251f3deb58f659b.jpg", "my_image");
+                richEditView.insertImage(
+                        "http://d.hiphotos.baidu.com/image/pic/item/91ef76c6a7efce1b5ef04082a251f3deb58f659b.jpg",
+                        "my_image");
             }
         });
     }

@@ -79,6 +79,7 @@ public class RichEditView extends FrameLayout implements View.OnClickListener {
 
     public interface OnActionListener {
         void insertLinkClicked();
+
         void insertImageClicked();
     }
 
@@ -146,11 +147,11 @@ public class RichEditView extends FrameLayout implements View.OnClickListener {
         } else if (i == R.id.action_blockquote) {
             mEditor.setBlockquote();
         } else if (i == R.id.action_insert_image) {
-            if(mListener!=null){
+            if (mListener != null) {
                 mListener.insertImageClicked();
             }
         } else if (i == R.id.action_insert_link) {
-            if(mListener!=null){
+            if (mListener != null) {
                 mListener.insertLinkClicked();
             }
         } else if (i == R.id.action_insert_checkbox) {
