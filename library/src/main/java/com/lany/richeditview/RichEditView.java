@@ -7,8 +7,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import jp.wasabeef.richeditor.RichEditor;
-
 public class RichEditView extends FrameLayout implements View.OnClickListener {
     private final String TAG = getClass().getSimpleName();
     private RichEditor mEditor;
@@ -305,7 +303,7 @@ public class RichEditView extends FrameLayout implements View.OnClickListener {
     }
 
     public void insertImage(String url, String alt) {
-        mEditor.insertLink(url, alt);
+        mEditor.insertImage(url, alt);
     }
 
     public void insertLink(String href, String title) {

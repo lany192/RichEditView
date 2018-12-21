@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <jp.wasabeef.richeditor.RichEditor
+    <com.lany.richeditview.RichEditor
         android:id="@+id/editor"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -14,8 +14,8 @@
         android:id="@+id/bottom_text_menu_view"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#999999"
-        android:scrollbarSize="2dp"
+        android:background="#555555"
+        android:scrollbarSize="1dp"
         android:scrollbars="horizontal"
         android:visibility="gone"
         tools:visibility="visible">
@@ -29,7 +29,7 @@
                 android:id="@+id/action_bold"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/bold" />
 
@@ -37,7 +37,7 @@
                 android:id="@+id/action_italic"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/italic" />
 
@@ -45,7 +45,7 @@
                 android:id="@+id/action_subscript"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/subscript" />
 
@@ -53,7 +53,7 @@
                 android:id="@+id/action_superscript"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/superscript" />
 
@@ -61,7 +61,7 @@
                 android:id="@+id/action_strikethrough"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/strikethrough" />
 
@@ -69,7 +69,7 @@
                 android:id="@+id/action_underline"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/underline" />
 
@@ -77,7 +77,7 @@
                 android:id="@+id/action_heading1"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/h1" />
 
@@ -85,7 +85,7 @@
                 android:id="@+id/action_heading2"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/h2" />
 
@@ -93,7 +93,7 @@
                 android:id="@+id/action_heading3"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/h3" />
 
@@ -101,7 +101,7 @@
                 android:id="@+id/action_heading4"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/h4" />
 
@@ -109,7 +109,7 @@
                 android:id="@+id/action_heading5"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/h5" />
 
@@ -117,7 +117,7 @@
                 android:id="@+id/action_heading6"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/h6" />
 
@@ -125,7 +125,7 @@
                 android:id="@+id/action_txt_color"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/txt_color" />
 
@@ -133,7 +133,7 @@
                 android:id="@+id/action_bg_color"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/bg_color" />
 
@@ -141,7 +141,7 @@
                 android:id="@+id/action_indent"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/indent" />
 
@@ -149,7 +149,7 @@
                 android:id="@+id/action_outdent"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/outdent" />
 
@@ -157,7 +157,7 @@
                 android:id="@+id/action_align_left"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/justify_left" />
 
@@ -165,7 +165,7 @@
                 android:id="@+id/action_align_center"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/justify_center" />
 
@@ -173,7 +173,7 @@
                 android:id="@+id/action_align_right"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/justify_right" />
 
@@ -181,7 +181,7 @@
                 android:id="@+id/action_insert_bullets"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/bullets" />
 
@@ -189,7 +189,7 @@
                 android:id="@+id/action_insert_numbers"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/numbers" />
 
@@ -197,7 +197,7 @@
                 android:id="@+id/action_blockquote"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/blockquote" />
 
@@ -210,7 +210,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="#303030"
-        android:scrollbarSize="2dp"
+        android:scrollbarSize="1dp"
         android:scrollbars="horizontal">
 
         <LinearLayout
@@ -222,7 +222,7 @@
                 android:id="@+id/action_text_menu"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/text_a_white" />
 
@@ -230,7 +230,7 @@
                 android:id="@+id/action_undo"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/undo" />
 
@@ -238,7 +238,7 @@
                 android:id="@+id/action_redo"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/redo" />
 
@@ -247,7 +247,7 @@
                 android:id="@+id/action_insert_image"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/image_white" />
 
@@ -255,7 +255,7 @@
                 android:id="@+id/action_insert_link"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/link_white" />
 
@@ -263,7 +263,7 @@
                 android:id="@+id/action_insert_checkbox"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/check_white" />
 

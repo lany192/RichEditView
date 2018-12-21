@@ -5,8 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.lany.richeditview.RichEditView;
-
-import jp.wasabeef.richeditor.RichEditor;
+import com.lany.richeditview.RichEditor;
 
 public class MainActivity extends AppCompatActivity {
     private RichEditView richEditView;
@@ -25,12 +24,12 @@ public class MainActivity extends AppCompatActivity {
         richEditView.setOnActionListener(new RichEditView.OnActionListener() {
             @Override
             public void insertLinkClicked() {
-                richEditView.insertLink("https://github.com/wasabeef", "wasabeef");
+                richEditView.insertLink("https://github.com/wasabeef", "我是链接");
             }
 
             @Override
             public void insertImageClicked() {
-                richEditView.insertImage("http://www.1honeywan.com/dachshund/image/7.21/7.21_3_thumb.JPG", "dachshund");
+                richEditView.insertImage("http://d.hiphotos.baidu.com/image/pic/item/91ef76c6a7efce1b5ef04082a251f3deb58f659b.jpg", "my_image");
             }
         });
     }
