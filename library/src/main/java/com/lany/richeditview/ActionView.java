@@ -7,45 +7,35 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 
-public class RichEditView extends FrameLayout implements View.OnClickListener {
-    private final String TAG = getClass().getSimpleName();
+public class ActionView extends FrameLayout implements View.OnClickListener {
     private RichEditor mEditor;
     private boolean mTextColorChanged;
     private boolean mBgColorChanged;
     private View mTextMenuView;
     private OnActionListener mListener;
 
-    public RichEditView(Context context) {
+    public void setRichEditor(RichEditor editor) {
+        this.mEditor = editor;
+    }
+
+    public ActionView(Context context) {
         super(context);
         initView(null);
     }
 
-    public RichEditView(Context context, AttributeSet attrs) {
+    public ActionView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView(attrs);
     }
 
-    public RichEditView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ActionView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView(attrs);
     }
 
     private void initView(AttributeSet attrs) {
-        View view = View.inflate(this.getContext(), R.layout.view_edit, this);
-        mEditor = view.findViewById(R.id.editor);
+        View view = View.inflate(this.getContext(), R.layout.view_editor_action, this);
         mTextMenuView = view.findViewById(R.id.bottom_text_menu_view);
-
-
-//        mEditor.setEditorHeight(200);
-        mEditor.setEditorFontSize(18);
-        mEditor.setEditorFontColor(Color.BLACK);
-        //mEditor.setEditorBackgroundColor(Color.BLUE);
-        //mEditor.setBackgroundColor(Color.BLUE);
-        //mEditor.setBackgroundResource(R.drawable.bg);
-        mEditor.setPadding(10, 10, 10, 10);
-        //mEditor.setBackground("https://raw.githubusercontent.com/wasabeef/art/master/chip.jpg");
-        mEditor.setPlaceholder("请输入...");
-        //mEditor.setInputEnabled(false);
 
         findViewById(R.id.action_text_menu).setOnClickListener(this);
         findViewById(R.id.action_undo).setOnClickListener(this);
