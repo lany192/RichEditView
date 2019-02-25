@@ -194,8 +194,6 @@
                 android:background="?android:attr/actionBarItemBackground"
                 android:contentDescription="@null"
                 android:src="@drawable/blockquote" />
-
-
         </LinearLayout>
     </HorizontalScrollView>
 
