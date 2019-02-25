@@ -384,7 +384,7 @@ public class RichEditor extends WebView {
      */
     public void lineFeed() {
         exec("javascript:RE.prepareInsert();");
-        exec("javascript:RE.insertHTML('<br></br>');");
+        exec("javascript:RE.insertHTML('<br>');");
     }
 
     public void insertLink(String href, String title) {
